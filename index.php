@@ -10,7 +10,7 @@
         $myusername = mysqli_real_escape_string($db,$_POST['username']);
         $mypassword = mysqli_real_escape_string($db,$_POST['password']);
 
-        $sql = "SELECT * FROM login WHERE uname = '$myusername' and pass = '$mypassword'";
+        $sql = "SELECT * FROM user WHERE uname = '$myusername' and password = '$mypassword'";
 
         $result = mysqli_query($db,$sql);
 
@@ -82,11 +82,7 @@
                     </div>
                     <input type="submit" class="btn btn-primary btn-user btn-block" value="Login">
                     <hr>
-                    <a href="home.php" class="btn btn-google btn-user btn-block">
-                      <i class="fab fa-google fa-fw"></i> Login with Google
-                    </a>
-                    <a href="home.php" class="btn btn-facebook btn-user btn-block">
-                      <i class="fab fa-facebook-f fa-fw"></i> Login with Facebook
+                    <input type="submit" class="btn btn-google btn-user btn-block" value="Login with Google">
                     </a>
                   </form>
                   <hr>

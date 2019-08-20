@@ -1,5 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
+<?php
+      include("config.php");
+      session_start();
+
+      if($_SERVER["REQUEST_METHOD"] == "POST") {
+        // username and password sent from form
+
+        $username = mysqli_real_escape_string($db,$_POST['username']);
+        $password = mysqli_real_escape_string($db,$_POST['password']);
+        $firstname = mysqli_real_escape_string($db,$_POST['firstname']);
+        $lastname = mysqli_real_escape_string($db,$_POST['lastname']);
+        $email = mysqli_real_escape_string($db,$_POST['email']);
+        $position = mysqli_real_escape_string($db,$_POST['position']);
+
+        $sql = "INSERT INTO user (`first_name`, `last_name`, `email`, `uname`, `password`, `position`) VALUES('$firstname', '$lastname', '$email', '$username', '$password', '$position');";
+
+        try{
+          $result = mysqli_query($db,$sql);
+          echo '<script language="javascript">';
+          echo 'alert("You may log into the system.")';
+          echo '</script>';
+        }
+        catch(Exception $e){
+          echo '<script language="javascript">';
+          echo 'alert("Error in connection.")';
+          echo '</script>';
+        }
+ } ?>
 
 <head>
 
@@ -34,36 +62,40 @@
               <div class="text-center">
                 <h1 class="h4 text-gray-900 mb-4">Create an Account!</h1>
               </div>
-              <form class="user">
+              <form class="user" method="POST" action="">
                 <div class="form-group row">
                   <div class="col-sm-6 mb-3 mb-sm-0">
-                    <input type="text" class="form-control form-control-user" id="exampleFirstName" placeholder="First Name">
+                    <input type="firstname" class="form-control form-control-user" name="firstname" id="firstname" placeholder="First Name">
                   </div>
                   <div class="col-sm-6">
-                    <input type="text" class="form-control form-control-user" id="exampleLastName" placeholder="Last Name">
+                    <input type="lastname" class="form-control form-control-user" name="lastname" id="lastname" placeholder="Last Name">
                   </div>
                 </div>
                 <div class="form-group">
-                  <input type="email" class="form-control form-control-user" id="exampleInputEmail" placeholder="Email Address">
+                  <input type="email" class="form-control form-control-user" name="email" id="email" placeholder="Email Address">
+                </div>
+                <div class="dropdown no-arrow mb-4 col-sm-6 mb-3">
+                  Position:
+                  <select type="position" name="position" id="position" class="btn btn-secondary dropdown-toggle" aria-labelledby="dropdownMenuButton">
+                    <option class="dropdown-item">Manager</option>
+                    <option class="dropdown-item">Assistant</option>
+                    <option class="dropdown-item">Janitor</option>
+                  </select>
                 </div>
                 <div class="form-group row">
-                  <div class="col-sm-6 mb-3 mb-sm-0">
-                    <input type="password" class="form-control form-control-user" id="exampleInputPassword" placeholder="Password">
+                  <div class="col-sm-6 mb-3">
+                    <input type="username" class="form-control form-control-user" name="username" id="username" placeholder="Username">
                   </div>
-                  <div class="col-sm-6">
-                    <input type="password" class="form-control form-control-user" id="exampleRepeatPassword" placeholder="Repeat Password">
+                  <div class="col-sm-6 mb-3 mb-sm-0">
+                    <input type="password" class="form-control form-control-user" name="password" id="password" placeholder="Password">
+                  </div>
+                  <div class="col-sm-6 mb-3 mb-sm-0">
+                    <input type="repPassword" class="form-control form-control-user" name="repPassword" id="repPassword" placeholder="Repeat Password">
                   </div>
                 </div>
-                <a href="index.php" class="btn btn-primary btn-user btn-block">
-                  Register Account
-                </a>
+                <input type="submit" class="btn btn-primary btn-user btn-block" value="Register Account">
                 <hr>
-                <a href="home.php" class="btn btn-google btn-user btn-block">
-                  <i class="fab fa-google fa-fw"></i> Register with Google
-                </a>
-                <a href="home.php" class="btn btn-facebook btn-user btn-block">
-                  <i class="fab fa-facebook-f fa-fw"></i> Register with Facebook
-                </a>
+                <input type="submit" class="btn btn-google btn-user btn-block fa-google" value="Register with Google">
               </form>
               <hr>
               <div class="text-center">
