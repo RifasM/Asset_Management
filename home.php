@@ -1,5 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
+<?php
+      include("config.php");
+      session_start();
+      if((int)$_SESSION['id']==-1){
+          header("location: index.php");
+        }
+      else{
+          $name=$_SESSION['name'];
+      }
+
+      if($_SERVER["REQUEST_METHOD"] == "POST") {
+        // username and password sent from form
+
+        $myusername = mysqli_real_escape_string($db,$_POST['username']);
+        $mypassword = mysqli_real_escape_string($db,$_POST['password']);
+
+        $sql = "SELECT * FROM user WHERE uname = '$myusername' and password = '$mypassword'";
+
+        $result = mysqli_query($db,$sql);
+
+        $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
+
+        $count = mysqli_num_rows($result);
+
+        // If result matched $myusername and $mypassword, table row must be 1 row
+
+        if($count == 1) {
+            header("location: home.php");
+        }
+        else {
+          echo '<script language="javascript">';
+          echo 'alert("Your Login Name or Password is invalid")';
+          echo '</script>';
+ }} ?>
 
 <head>
 
@@ -58,13 +92,18 @@
       <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
           <i class="fas fa-fw fa-cog"></i>
-          <span>Components</span>
+          <span>Departments</span>
         </a>
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Custom Components:</h6>
-            <a class="collapse-item" href="buttons.php">Buttons</a>
-            <a class="collapse-item" href="cards.php">Cards</a>
+            <h6 class="collapse-header">Departments</h6>
+            <a class="collapse-item" href="cse.php">Computer Science</a>
+            <a class="collapse-item" href="ise.php">Information Science</a>
+            <a class="collapse-item" href="ece.php">Electronics And Communications</a>
+            <a class="collapse-item" href="eee.php">Electronics And Electrical</a>
+            <a class="collapse-item" href="cie.php">Civil Engineering</a>
+            <a class="collapse-item" href="mee.php">Mechanical Engineering</a>
+            <a class="collapse-item" href="tce.php">Telecommunication</a>
           </div>
         </div>
       </li>
@@ -298,7 +337,7 @@
             <!-- Nav Item - User Information -->
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Valerie Luna</span>
+                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php $name ?></span>
                 <img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60">
               </a>
               <!-- Dropdown - User Information -->
@@ -601,7 +640,7 @@
                   <h6 class="m-0 font-weight-bold text-primary">Development Approach</h6>
                 </div>
                 <div class="card-body">
-                  <p>CMR Admin Console makes extensive use of Bootstrap 4 utility classes in order to reduce CSS bloat and poor page performance. Custom CSS classes are used to create custom components and custom utility classes.</p>
+                  <p>CMR Admin Console makes extensive use of Bootstrap 4 utility classes in order to reduce CSS bloat and poor page performance. Custom CSS classes are used to create Departments and custom utility classes.</p>
                   <p class="mb-0">Before working with this theme, you should become familiar with the Bootstrap framework, especially the utility classes.</p>
                 </div>
               </div>
@@ -649,7 +688,7 @@
         <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
         <div class="modal-footer">
           <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-          <a class="btn btn-primary" href="index.php">Logout</a>
+          <a class="btn btn-primary" href="index.php">Logout<?php SESSION_DESTROY();$_SESSION['id']=-1 ?></a>
         </div>
       </div>
     </div>

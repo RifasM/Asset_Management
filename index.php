@@ -21,6 +21,8 @@
         // If result matched $myusername and $mypassword, table row must be 1 row
 
         if($count == 1) {
+            $_SESSION['id'] = $row[0];
+            $_SESSION['name'] = $myusername;
             header("location: home.php");
         }
         else {

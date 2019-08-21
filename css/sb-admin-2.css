@@ -161,6 +161,7 @@ sup {
 
 a {
   color: #4e73df;
+  word-wrap: break-word;
   text-decoration: none;
   background-color: transparent;
 }
