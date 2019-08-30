@@ -3,11 +3,10 @@
 <?php
       include("config.php");
       session_start();
-      if((int)$_SESSION['id']==-1){
-          header("location: index.php");
-        }
-      else{
-          $name=$_SESSION['name'];
+      if(!isset($_SESSION['name']))
+      {
+          header('Location: index.php');
+          exit();
       }
 
       if($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -688,7 +687,7 @@
         <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
         <div class="modal-footer">
           <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-          <a class="btn btn-primary" href="index.php">Logout<?php SESSION_DESTROY();$_SESSION['id']=-1 ?></a>
+          <a class="btn btn-primary" href="index.php">Logout<?php SESSION_DESTROY();?></a>
         </div>
       </div>
     </div>
