@@ -1,0 +1,4 @@
+Commands on Ubuntu
+- uname --m
+- uname -o
+- sudo lshw (All info)
