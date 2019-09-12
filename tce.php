@@ -3,6 +3,12 @@
 <?php
       include("config.php");
       session_start();
+      if((int)$_SESSION['id']==-1){
+          header("location: index.php");
+        }
+      else{
+          $name=$_SESSION['name'];
+      }
 
       if($_SERVER["REQUEST_METHOD"] == "POST") {
         // username and password sent from form
@@ -97,7 +103,7 @@
             <a class="collapse-item" href="eee.php">Electronics And Electrical</a>
             <a class="collapse-item" href="cie.php">Civil Engineering</a>
             <a class="collapse-item" href="mee.php">Mechanical Engineering</a>
-            <a class="collapse-item" href="tce.php">Telecommunication Engineering</a>
+            <a class="collapse-item" href="tce.php">Telecommunication</a>
           </div>
         </div>
       </li>
@@ -331,7 +337,7 @@
             <!-- Nav Item - User Information -->
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo $_SESSION['name'];?></span>
+                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php $name ?></span>
                 <img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60">
               </a>
               <!-- Dropdown - User Information -->
@@ -682,7 +688,7 @@
         <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
         <div class="modal-footer">
           <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-          <a class="btn btn-primary" href="index.php">Logout</a>
+          <a class="btn btn-primary" href="index.php">Logout<?php SESSION_DESTROY();$_SESSION['id']=-1 ?></a>
         </div>
       </div>
     </div>
