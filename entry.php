@@ -415,8 +415,34 @@
         </nav>
         <!-- End of Topbar -->
 
+        <div class="card mb-4">
+          <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Select Asset Type</h6>
+          </div>
+          <div class="card-body">
+            <div class="dropdown no-arrow mb-4">
+              <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Select Asset Type
+              </button>
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item" href="Asset_Fields/cpu.php">CPU</a>
+                <a class="dropdown-item" href="Asset_Fields/monitor.php">Monitor</a>
+                <a class="dropdown-item" href="Asset_Fields/cpu.php">Mouse</a>
+                <a class="dropdown-item" href="Asset_Fields/cpu.php">Keyboard</a>
+                <a class="dropdown-item" href="Asset_Fields/cpu.php">Printer</a>
+                <a class="dropdown-item" href="Asset_Fields/cpu.php">Speaker</a>
+                <a class="dropdown-item" href="Asset_Fields/cpu.php">Lan Box</a>
+                <a class="dropdown-item" href="Asset_Fields/cpu.php">CRO</a>
+                <a class="dropdown-item" href="Asset_Fields/cpu.php">Scanner</a>
+                <a class="dropdown-item" href="Asset_Fields/cpu.php">WiFi Router</a>
+                <a class="dropdown-item" href="Asset_Fields/cpu.php">Others</a>
+              </div>
+            </div>
+          </div>
+        </div>
+<?php echo $a; ?>
 
-        
+
       </div>
       <!-- End of Main Content -->
 
@@ -424,7 +450,7 @@
       <footer class="sticky-footer bg-white">
         <div class="container my-auto">
           <div class="copyright text-center my-auto">
-            <span>Copyright &copy; Your Website 2019</span>
+            <span>Copyright &copy; CMR Group 2019</span>
           </div>
         </div>
       </footer>
