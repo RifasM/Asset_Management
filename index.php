@@ -10,7 +10,7 @@
         $myusername = mysqli_real_escape_string($db,$_POST['username']);
         $mypassword = mysqli_real_escape_string($db,$_POST['password']);
 
-        $sql = "SELECT * FROM user WHERE uname = '$myusername' and password = '$mypassword'";
+        $sql = "SELECT * FROM login WHERE email_id = '$myusername' and password = '$mypassword'";
 
         $result = mysqli_query($db,$sql);
 
@@ -23,6 +23,7 @@
         if($count == 1) {
             $_SESSION['id'] = $row[0];
             $_SESSION['name'] = $myusername;
+            $_SESSION['uname'] = $row[1];
             header("location: home.php");
         }
         else {
