@@ -38,11 +38,14 @@
                 <div class="p-5">
                   <div class="text-center">
                     <h1 class="h4 text-gray-900 mb-2">Forgot Your Password?</h1>
-                    <p class="mb-4">We get it, stuff happens. Just enter your email address below and we'll help reset your password!</p>
+                    <p class="mb-4">We get it, stuff happens. Just enter the following details and we'll help reset your password!</p>
                   </div>
                   <form class="user">
                     <div class="form-group">
                       <input type="email" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Enter Email Address...">
+                    </div>
+                    <div class="form-group">
+                      <input type="forgotpassword" class="form-control form-control-user" id="forgotpassword" aria-describedby="Question" placeholder="Enter your ID number...">
                     </div>
                     <a href="index.php" class="btn btn-primary btn-user btn-block">
                       Reset Password

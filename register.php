@@ -12,9 +12,11 @@
         $firstname = mysqli_real_escape_string($db,$_POST['firstname']);
         $lastname = mysqli_real_escape_string($db,$_POST['lastname']);
         $email = mysqli_real_escape_string($db,$_POST['email']);
-        $position = mysqli_real_escape_string($db,$_POST['position']);
+        $designation = mysqli_real_escape_string($db,$_POST['designation']);
+        $forgotpassword = mysqli_real_escape_string($db,$_POST['forgotpassword']);
 
-        $sql = "INSERT INTO user (`first_name`, `last_name`, `email`, `uname`, `password`, `position`) VALUES('$firstname', '$lastname', '$email', '$username', '$password', '$position');";
+
+        $sql = "INSERT INTO user (`first_name`, `last_name`, `email`, `uname`, `password`, `designation`,`forgotpassword`) VALUES('$firstname', '$lastname', '$email', '$username', '$password', '$designation','$forgotpassword');";
 
         try{
           $result = mysqli_query($db,$sql);
@@ -75,8 +77,8 @@
                   <input type="email" class="form-control form-control-user" name="email" id="email" placeholder="Email Address">
                 </div>
                 <div class="dropdown no-arrow mb-4 col-sm-6 mb-3">
-                  Position:
-                  <select type="position" name="position" id="position" class="btn btn-secondary dropdown-toggle" aria-labelledby="dropdownMenuButton">
+                  Designation:
+                  <select type="designation" name="designation" id="designation" class="btn btn-secondary dropdown-toggle" aria-labelledby="dropdownMenuButton">
                     <option class="dropdown-item">Manager</option>
                     <option class="dropdown-item">Assistant</option>
                     <option class="dropdown-item">Janitor</option>
@@ -93,9 +95,12 @@
                     <input type="repPassword" class="form-control form-control-user" name="repPassword" id="repPassword" placeholder="Repeat Password">
                   </div>
                 </div>
+                <div class="form-group">
+                  <input type="forgotpassword" class="form-control form-control-user" name="forgotpassword" id="forgotpassword" placeholder="Enter your ID number...">
+                </div>
                 <input type="submit" class="btn btn-primary btn-user btn-block" value="Register Account">
                 <hr>
-                <input type="submit" class="btn btn-google btn-user btn-block fa-google" value="Register with Google">
+
               </form>
               <hr>
               <div class="text-center">

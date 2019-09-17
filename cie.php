@@ -3,31 +3,11 @@
 <?php
       include("config.php");
       session_start();
-
-      if($_SERVER["REQUEST_METHOD"] == "POST") {
-        // username and password sent from form
-
-        $myusername = mysqli_real_escape_string($db,$_POST['username']);
-        $mypassword = mysqli_real_escape_string($db,$_POST['password']);
-
-        $sql = "SELECT * FROM user WHERE uname = '$myusername' and password = '$mypassword'";
-
-        $result = mysqli_query($db,$sql);
-
-        $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
-
-        $count = mysqli_num_rows($result);
-
-        // If result matched $myusername and $mypassword, table row must be 1 row
-
-        if($count == 1) {
-            header("location: home.php");
-        }
-        else {
-          echo '<script language="javascript">';
-          echo 'alert("Your Login Name or Password is invalid")';
-          echo '</script>';
- }} ?>
+      if(!isset($_SESSION['name'])){
+          header('Location: index.php');
+          exit();
+      }
+ ?>
 
 <head>
 
@@ -84,22 +64,96 @@
 
       <!-- Nav Item - Pages Collapse Menu -->
       <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseSome" aria-expanded="true" aria-controls="collapseTwo">
           <i class="fas fa-fw fa-cog"></i>
           <span>Departments</span>
         </a>
-        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+        <div id="collapseSome" data-toggle="collapse" aria-expanded="true" aria-controls="collapseTwo">
+          <a class="nav-link collapse" href="#" data-toggle="collapse" data-target="#collapse1" aria-expanded="true" aria-controls="collapseTwo">
+            <i class="fas fa-fw fa-cog"></i>
+                 <span>Computer Science</span>
+            </a>
+          <div id="collapse1" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Departments</h6>
-            <a class="collapse-item" href="cse.php">Computer Science</a>
-            <a class="collapse-item" href="ise.php">Information Science</a>
-            <a class="collapse-item" href="ece.php">Electronics And Communications</a>
-            <a class="collapse-item" href="eee.php">Electronics And Electrical</a>
-            <a class="collapse-item" href="cie.php">Civil Engineering</a>
-            <a class="collapse-item" href="mee.php">Mechanical Engineering</a>
-            <a class="collapse-item" href="tce.php">Telecommunication Engineering</a>
+            <a class="collapse-item" href="cse.php">Dashboard</a>
+            <a class="collapse-item" href="entry.php">Enter new Asset</a>
+            <a class="collapse-item" href="delete.php">Delete Asset</a>
+            <a class="collapse-item" href="modify.php">Modify Asset</a>
           </div>
         </div>
+        <a class="nav-link collapse" href="#" data-toggle="collapse" data-target="#collapse2" aria-expanded="true" aria-controls="collapseTwo">
+          <i class="fas fa-fw fa-cog"></i>
+               <span>Information Science</span>
+          </a>
+        <div id="collapse2" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+        <div class="bg-white py-2 collapse-inner rounded">
+          <a class="collapse-item" href="ise.php">Dashboard</a>
+          <a class="collapse-item" href="entry.php">Enter new Asset</a>
+          <a class="collapse-item" href="delete.php">Delete Asset</a>
+          <a class="collapse-item" href="modify.php">Modify Asset</a>
+        </div>
+      </div>
+      <a class="nav-link collapse" href="#" data-toggle="collapse" data-target="#collapse3" aria-expanded="true" aria-controls="collapseTwo">
+        <i class="fas fa-fw fa-cog"></i>
+             <span>Electronics and Communication</span>
+        </a>
+      <div id="collapse3" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+      <div class="bg-white py-2 collapse-inner rounded">
+        <a class="collapse-item" href="ece.php">Dashboard</a>
+        <a class="collapse-item" href="entry.php">Enter new Asset</a>
+        <a class="collapse-item" href="delete.php">Delete Asset</a>
+        <a class="collapse-item" href="modify.php">Modify Asset</a>
+      </div>
+    </div>
+      <a class="nav-link collapse" href="#" data-toggle="collapse" data-target="#collapse4" aria-expanded="true" aria-controls="collapseTwo">
+        <i class="fas fa-fw fa-cog"></i>
+             <span>Electrial and Electronics</span>
+        </a>
+      <div id="collapse4" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+      <div class="bg-white py-2 collapse-inner rounded">
+        <a class="collapse-item" href="eee.php">Dashboard</a>
+        <a class="collapse-item" href="entry.php">Enter new Asset</a>
+        <a class="collapse-item" href="delete.php">Delete Asset</a>
+        <a class="collapse-item" href="modify.php">Modify Asset</a>
+      </div>
+    </div>
+      <a class="nav-link collapse" href="#" data-toggle="collapse" data-target="#collapse5" aria-expanded="true" aria-controls="collapseTwo">
+        <i class="fas fa-fw fa-cog"></i>
+             <span>Telecommunicaion</span>
+        </a>
+      <div id="collapse5" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+      <div class="bg-white py-2 collapse-inner rounded">
+        <a class="collapse-item" href="tce.php">Dashboard</a>
+        <a class="collapse-item" href="entry.php">Enter new Asset</a>
+        <a class="collapse-item" href="delete.php">Delete Asset</a>
+        <a class="collapse-item" href="modify.php">Modify Asset</a>
+      </div>
+    </div>
+    <a class="nav-link collapse" href="#" data-toggle="collapse" data-target="#collapse6" aria-expanded="true" aria-controls="collapseTwo">
+      <i class="fas fa-fw fa-cog"></i>
+           <span>Mechanical Enginnering</span>
+      </a>
+    <div id="collapse6" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+    <div class="bg-white py-2 collapse-inner rounded">
+      <a class="collapse-item" href="mee.php">Dashboard</a>
+      <a class="collapse-item" href="entry.php">Enter new Asset</a>
+      <a class="collapse-item" href="delete.php">Delete Asset</a>
+      <a class="collapse-item" href="modify.php">Modify Asset</a>
+    </div>
+    </div>
+    <a class="nav-link collapse" href="#" data-toggle="collapse" data-target="#collapse7" aria-expanded="true" aria-controls="collapseTwo">
+      <i class="fas fa-fw fa-cog"></i>
+           <span>Civil Enginnering</span>
+      </a>
+    <div id="collapse7" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+    <div class="bg-white py-2 collapse-inner rounded">
+      <a class="collapse-item" href="cie.php">Dashboard</a>
+      <a class="collapse-item" href="entry.php">Enter new Asset</a>
+      <a class="collapse-item" href="delete.php">Delete Asset</a>
+      <a class="collapse-item" href="modify.php">Modify Asset</a>
+    </div>
+    </div>
+  </div>
       </li>
 
       <!-- Nav Item - Utilities Collapse Menu -->
@@ -331,7 +385,7 @@
             <!-- Nav Item - User Information -->
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo $_SESSION['name'];?></span>
+                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php $uname ?></span>
                 <img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60">
               </a>
               <!-- Dropdown - User Information -->
@@ -682,7 +736,7 @@
         <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
         <div class="modal-footer">
           <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-          <a class="btn btn-primary" href="index.php">Logout</a>
+          <a class="btn btn-primary" href="index.php">Logout<?php SESSION_DESTROY();?></a>
         </div>
       </div>
     </div>
