@@ -64,96 +64,19 @@
 
       <!-- Nav Item - Pages Collapse Menu -->
       <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseSome" aria-expanded="true" aria-controls="collapseTwo">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse" aria-expanded="true" aria-controls="collapseTwo">
           <i class="fas fa-fw fa-cog"></i>
-          <span>Departments</span>
+          <span>Assets</span>
         </a>
-        <div id="collapseSome" data-toggle="collapse" aria-expanded="true" aria-controls="collapseTwo">
-          <a class="nav-link collapse" href="#" data-toggle="collapse" data-target="#collapse1" aria-expanded="true" aria-controls="collapseTwo">
-            <i class="fas fa-fw fa-cog"></i>
-                 <span>Computer Science</span>
-            </a>
-          <div id="collapse1" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+        <div id="collapseSome" data-toggle="collapse" aria-expanded="true" aria-controls="collapse">
+          <div id="collapse" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
-            <a class="collapse-item" href="cse.php">Dashboard</a>
             <a class="collapse-item" href="entry.php">Enter new Asset</a>
             <a class="collapse-item" href="delete.php">Delete Asset</a>
             <a class="collapse-item" href="modify.php">Modify Asset</a>
           </div>
         </div>
-        <a class="nav-link collapse" href="#" data-toggle="collapse" data-target="#collapse2" aria-expanded="true" aria-controls="collapseTwo">
-          <i class="fas fa-fw fa-cog"></i>
-               <span>Information Science</span>
-          </a>
-        <div id="collapse2" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-        <div class="bg-white py-2 collapse-inner rounded">
-          <a class="collapse-item" href="ise.php">Dashboard</a>
-          <a class="collapse-item" href="entry.php">Enter new Asset</a>
-          <a class="collapse-item" href="delete.php">Delete Asset</a>
-          <a class="collapse-item" href="modify.php">Modify Asset</a>
-        </div>
       </div>
-      <a class="nav-link collapse" href="#" data-toggle="collapse" data-target="#collapse3" aria-expanded="true" aria-controls="collapseTwo">
-        <i class="fas fa-fw fa-cog"></i>
-             <span>Electronics and Communication</span>
-        </a>
-      <div id="collapse3" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-      <div class="bg-white py-2 collapse-inner rounded">
-        <a class="collapse-item" href="ece.php">Dashboard</a>
-        <a class="collapse-item" href="entry.php">Enter new Asset</a>
-        <a class="collapse-item" href="delete.php">Delete Asset</a>
-        <a class="collapse-item" href="modify.php">Modify Asset</a>
-      </div>
-    </div>
-      <a class="nav-link collapse" href="#" data-toggle="collapse" data-target="#collapse4" aria-expanded="true" aria-controls="collapseTwo">
-        <i class="fas fa-fw fa-cog"></i>
-             <span>Electrial and Electronics</span>
-        </a>
-      <div id="collapse4" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-      <div class="bg-white py-2 collapse-inner rounded">
-        <a class="collapse-item" href="eee.php">Dashboard</a>
-        <a class="collapse-item" href="entry.php">Enter new Asset</a>
-        <a class="collapse-item" href="delete.php">Delete Asset</a>
-        <a class="collapse-item" href="modify.php">Modify Asset</a>
-      </div>
-    </div>
-      <a class="nav-link collapse" href="#" data-toggle="collapse" data-target="#collapse5" aria-expanded="true" aria-controls="collapseTwo">
-        <i class="fas fa-fw fa-cog"></i>
-             <span>Telecommunicaion</span>
-        </a>
-      <div id="collapse5" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-      <div class="bg-white py-2 collapse-inner rounded">
-        <a class="collapse-item" href="tce.php">Dashboard</a>
-        <a class="collapse-item" href="entry.php">Enter new Asset</a>
-        <a class="collapse-item" href="delete.php">Delete Asset</a>
-        <a class="collapse-item" href="modify.php">Modify Asset</a>
-      </div>
-    </div>
-    <a class="nav-link collapse" href="#" data-toggle="collapse" data-target="#collapse6" aria-expanded="true" aria-controls="collapseTwo">
-      <i class="fas fa-fw fa-cog"></i>
-           <span>Mechanical Enginnering</span>
-      </a>
-    <div id="collapse6" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-    <div class="bg-white py-2 collapse-inner rounded">
-      <a class="collapse-item" href="mee.php">Dashboard</a>
-      <a class="collapse-item" href="entry.php">Enter new Asset</a>
-      <a class="collapse-item" href="delete.php">Delete Asset</a>
-      <a class="collapse-item" href="modify.php">Modify Asset</a>
-    </div>
-    </div>
-    <a class="nav-link collapse" href="#" data-toggle="collapse" data-target="#collapse7" aria-expanded="true" aria-controls="collapseTwo">
-      <i class="fas fa-fw fa-cog"></i>
-           <span>Civil Enginnering</span>
-      </a>
-    <div id="collapse7" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-    <div class="bg-white py-2 collapse-inner rounded">
-      <a class="collapse-item" href="cie.php">Dashboard</a>
-      <a class="collapse-item" href="entry.php">Enter new Asset</a>
-      <a class="collapse-item" href="delete.php">Delete Asset</a>
-      <a class="collapse-item" href="modify.php">Modify Asset</a>
-    </div>
-    </div>
-  </div>
       </li>
 
       <!-- Nav Item - Utilities Collapse Menu -->
@@ -440,8 +363,8 @@
             </div>
           </div>
         </div>
-<?php echo $a; ?>
-
+        <div class="container" id="entryContainer">
+        </div>
 
       </div>
       <!-- End of Main Content -->
