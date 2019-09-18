@@ -7,6 +7,7 @@
           header('Location: index.php');
           exit();
       }
+      $uname = $_SESSION['uname'];
  ?>
 
 <head>
@@ -29,7 +30,6 @@
 </head>
 
 <body id="page-top">
-
   <!-- Page Wrapper -->
   <div id="wrapper">
 
@@ -308,7 +308,7 @@
             <!-- Nav Item - User Information -->
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php $uname ?></span>
+                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo $uname ?></span>
                 <img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60">
               </a>
               <!-- Dropdown - User Information -->
@@ -356,8 +356,15 @@
                 <div class="card-body">
                   <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
-                      <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Earnings (Monthly)</div>
-                      <div class="h5 mb-0 font-weight-bold text-gray-800">$40,000</div>
+                      <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Total Assets</div>
+                      <?php
+                      $database = $_SESSION['database'];
+                      $d = mysqli_connect(DB_SERVER,DB_USERNAME,DB_PASSWORD,$database);
+                      //echo $database;
+                      $sql = "SELECT COUNT(*) FROM asset;";
+                      $result = mysqli_query($d, $sql);
+                      $row = mysqli_fetch_row($result); ?>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $row[0]; ?></div>
                     </div>
                     <div class="col-auto">
                       <i class="fas fa-calendar fa-2x text-gray-300"></i>
@@ -373,8 +380,12 @@
                 <div class="card-body">
                   <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
-                      <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Earnings (Annual)</div>
-                      <div class="h5 mb-0 font-weight-bold text-gray-800">$215,000</div>
+                      <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Total In Use</div>
+                      <?php
+                      $sql = "SELECT COUNT(*) FROM asset WHERE Used_or_not=1;";
+                      $result = mysqli_query($d, $sql);
+                      $row = mysqli_fetch_row($result); ?>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $row[0]; ?></div>
                     </div>
                     <div class="col-auto">
                       <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
@@ -390,14 +401,18 @@
                 <div class="card-body">
                   <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
-                      <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Tasks</div>
+                      <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Total Usage</div>
+                      <?php
+                      $sql = "SELECT ((pass.used/(pass.used+pass.notused))*100) FROM (SELECT COUNT(t1.Unique_id) as used, COUNT(t2.Unique_id) as notused FROM (SELECT Unique_id FROM ASSET WHERE Used_or_not=1) AS t1, (SELECT Unique_id FROM ASSET WHERE Used_or_not=0) AS t2) AS pass;";
+                      $result = mysqli_query($d, $sql);
+                      $u = mysqli_fetch_row($result); ?>
                       <div class="row no-gutters align-items-center">
-                        <div class="col-auto">
-                          <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">50%</div>
+                      <div class="col-auto">
+                          <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800"><?php echo $u[0]; ?>%</div>
                         </div>
                         <div class="col">
                           <div class="progress progress-sm mr-2">
-                            <div class="progress-bar bg-info" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                            <div class="progress-bar bg-info" role="progressbar" style="width: <?php echo $u[0]; ?>%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
                           </div>
                         </div>
                       </div>
@@ -416,8 +431,12 @@
                 <div class="card-body">
                   <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
-                      <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Pending Requests</div>
-                      <div class="h5 mb-0 font-weight-bold text-gray-800">18</div>
+                      <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">In Service</div>
+                      <?php
+                      $sql = "SELECT COUNT(*) FROM service;";
+                      $result = mysqli_query($d, $sql);
+                      $row = mysqli_fetch_row($result); ?>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $row[0]; ?></div>
                     </div>
                     <div class="col-auto">
                       <i class="fas fa-comments fa-2x text-gray-300"></i>
