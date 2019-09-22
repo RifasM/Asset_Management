@@ -2,7 +2,50 @@
 <html lang="en">
 <?php
     if($_SERVER["REQUEST_METHOD"] == "POST"){
+      $pdate = $_POST['pur_date'];
       $make = $_POST['make'];
+      $corema = $_POST['core_make'];
+      $corety = $_POST['core_type'];
+      $corefre = $_POST['core_freq'];
+      $arch = $_POST['arch'];
+      $os = $_POST['OS'];
+      $ramm = $_POST['ram_make'];
+      $ramf = $_POST['ram_freq'];
+      $ramt = $_POST['ram_type'];
+      $rams = $_POST['Ram'];
+      $eram = $_POST['extra_ram'];
+      $moth = $_POST['mot_make'];
+      $dvd = $_POST['dvd_make'];
+      $usb = $_POST['usb'];
+      $sound = $_POST['sound'];
+      $wifi = $_POST['wifi'];
+      $blue = $_POST['bluetooth'];
+      $speaker = $_POST['speaker'];
+      $hdd = $_POST['hard_disk'];
+      $flag=1;
+      foreach ($_POST as $key) {
+        if($key==''){
+          echo '<script language="javascript">';
+          echo 'alert("Fill in all the fields")';
+          echo '</script>';
+          break;
+          $flag=0;
+        }
+      }
+      $sql = "INSERT INTO cpu VALUES";
+      $sql = $sql.'(';
+      if($flag==0 && ($arch==1 || $wifi==1 || $blue ==1 || $speaker==1 || $sound==1) ){
+        echo '<script language="javascript">';
+        echo 'alert("Fill in all the fields")';
+        echo '</script>';
+      }
+      else{
+        foreach ($_POST as $key) {
+          $sql=$sql."'".$key."', ";
+        }
+        $sql = rtrim($sql, ", ").');';
+      }
+      echo $sql;
     }
       /*include("config.php");
       session_start();
@@ -399,10 +442,10 @@
                           <div class="form-group">
                             Enter Architecture:
                                 <div class="dropdown no-arrow mb-4">
-                                  <select class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <option class="dropdown-item" id="default">Select CPU Architecture Type</option>
-                                    <option class="dropdown-item" id="a1">x86 - 32 Bit</option>
-                                    <option class="dropdown-item" id="a2">x64 - 64 Bit</option>
+                                  <select class="btn btn-secondary dropdown-toggle" type="button" name="arch" id="arch" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <option class="dropdown-item" value="1" id="default">Select CPU Architecture Type</option>
+                                    <option class="dropdown-item" value="2" id="a1">x86 - 32 Bit</option>
+                                    <option class="dropdown-item" value="3" id="a2">x64 - 64 Bit</option>
                                   </select>
                                 </div>
                           </div>
@@ -458,40 +501,40 @@
                           <div class="form-group">
                             Sound Card Status:
                             <div class="dropdown no-arrow mb-4">
-                              <select class="btn btn-secondary dropdown-toggle" type="button" id="sound" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <option class="dropdown-item" id="default">Select Sound Card State</option>
-                                <option class="dropdown-item" id="s1">Installed</option>
-                                <option class="dropdown-item" id="s2">Not Installed</option>
+                              <select class="btn btn-secondary dropdown-toggle" type="button" name="sound" id="sound" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <option class="dropdown-item" value="1" id="default">Select Sound Card State</option>
+                                <option class="dropdown-item" value="Installed" id="s1">Installed</option>
+                                <option class="dropdown-item" value="Not Installed" id="s2">Not Installed</option>
                               </select>
                               </div>
                             </div>
                             <div class="form-group">
                               Bluetooth Status:
                               <div class="dropdown no-arrow mb-4">
-                                <select class="btn btn-secondary dropdown-toggle" type="button" id="bluetooth" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                  <option class="dropdown-item" id="default">Select Bluetooth State</option>
-                                  <option class="dropdown-item" id="b1">Installed</option>
-                                  <option class="dropdown-item" id="b2">Not Installed</option>
+                                <select class="btn btn-secondary dropdown-toggle" type="button" name="bluetooth" id="bluetooth" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                  <option class="dropdown-item" value="1" id="default">Select Bluetooth State</option>
+                                  <option class="dropdown-item" value="Installed" id="b1">Installed</option>
+                                  <option class="dropdown-item" value="Not Installed" id="b2">Not Installed</option>
                                 </select>
                                 </div>
                               </div>
                               <div class="form-group">
                                 WiFi Status:
                                 <div class="dropdown no-arrow mb-4">
-                                  <select class="btn btn-secondary dropdown-toggle" type="button" id="wifi" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <option class="dropdown-item" id="default">Select WiFi State</option>
-                                    <option class="dropdown-item" id="w1">Installed</option>
-                                    <option class="dropdown-item" id="w2">Not Installed</option>
+                                  <select class="btn btn-secondary dropdown-toggle" type="button" name="wifi" id="wifi" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <option class="dropdown-item" value="1" id="default">Select WiFi State</option>
+                                    <option class="dropdown-item" value="Installed" id="w1">Installed</option>
+                                    <option class="dropdown-item" value="Not Installed" id="w2">Not Installed</option>
                                   </select>
                                   </div>
                                 </div>
                         <div class="form-group">
                           Speaker Status:
                           <div class="dropdown no-arrow mb-4">
-                            <select class="btn btn-secondary dropdown-toggle" type="button" id="wifi" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                              <option class="dropdown-item" id="default">Select Speaker State</option>
-                              <option class="dropdown-item" id="p1">Installed</option>
-                              <option class="dropdown-item" id="p2">Not Installed</option>
+                            <select class="btn btn-secondary dropdown-toggle" type="button" name="speaker" id="speaker" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                              <option class="dropdown-item" value="1" id="default">Select Speaker State</option>
+                              <option class="dropdown-item" value="Installed" id="p1">Installed</option>
+                              <option class="dropdown-item" value="Not Installed" id="p2">Not Installed</option>
                             </select>
                             </div>
                           </div>
