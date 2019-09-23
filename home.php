@@ -3,10 +3,10 @@
 <?php
       include("config.php");
       session_start();
-      if(!isset($_SESSION['name'])){
+      /*if(!isset($_SESSION['name'])){
           header('Location: index.php');
           exit();
-      }
+      }*/
       $uname = $_SESSION['uname'];
  ?>
 
@@ -359,9 +359,10 @@
                       <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Total Assets</div>
                       <?php
                       $database = $_SESSION['database'];
-                      $d = mysqli_connect(DB_SERVER,DB_USERNAME,DB_PASSWORD,$database);
-                      //echo $database;
-                      $sql = "SELECT COUNT(*) FROM asset;";
+                      $database = 'cmrit';
+                      $d = mysqli_connect(DB_SERVER,DB_USERNAME.'_'.$database,DB_PASSWORD,$database.'_data');
+                      //echo $database.'_data';
+                      $sql = "SELECT COUNT(*) FROM Asset;";
                       $result = mysqli_query($d, $sql);
                       $row = mysqli_fetch_row($result); ?>
                       <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $row[0]; ?></div>
@@ -382,7 +383,7 @@
                     <div class="col mr-2">
                       <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Total In Use</div>
                       <?php
-                      $sql = "SELECT COUNT(*) FROM asset WHERE Used_or_not=1;";
+                      $sql = "SELECT COUNT(*) FROM Asset WHERE Used_or_not=1;";
                       $result = mysqli_query($d, $sql);
                       $row = mysqli_fetch_row($result); ?>
                       <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $row[0]; ?></div>
@@ -403,7 +404,7 @@
                     <div class="col mr-2">
                       <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Total Usage</div>
                       <?php
-                      $sql = "SELECT ((pass.used/(pass.used+pass.notused))*100) FROM (SELECT COUNT(t1.Unique_id) as used, COUNT(t2.Unique_id) as notused FROM (SELECT Unique_id FROM ASSET WHERE Used_or_not=1) AS t1, (SELECT Unique_id FROM ASSET WHERE Used_or_not=0) AS t2) AS pass;";
+                      $sql = "SELECT ((pass.used/(pass.used+pass.notused))*100) FROM (SELECT COUNT(t1.Unique_id) as used, COUNT(t2.Unique_id) as notused FROM (SELECT Unique_id FROM Asset WHERE Used_or_not=1) AS t1, (SELECT Unique_id FROM Asset WHERE Used_or_not=0) AS t2) AS pass;";
                       $result = mysqli_query($d, $sql);
                       $u = mysqli_fetch_row($result); ?>
                       <div class="row no-gutters align-items-center">
@@ -433,7 +434,7 @@
                     <div class="col mr-2">
                       <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">In Service</div>
                       <?php
-                      $sql = "SELECT COUNT(*) FROM service;";
+                      $sql = "SELECT COUNT(*) FROM Service;";
                       $result = mysqli_query($d, $sql);
                       $row = mysqli_fetch_row($result); ?>
                       <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $row[0]; ?></div>

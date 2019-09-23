@@ -350,15 +350,15 @@
               <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                 <a class="dropdown-item" href="Asset_Fields/cpu.php">CPU</a>
                 <a class="dropdown-item" href="Asset_Fields/monitor.php">Monitor</a>
-                <a class="dropdown-item" href="Asset_Fields/cpu.php">Mouse</a>
-                <a class="dropdown-item" href="Asset_Fields/cpu.php">Keyboard</a>
-                <a class="dropdown-item" href="Asset_Fields/cpu.php">Printer</a>
-                <a class="dropdown-item" href="Asset_Fields/cpu.php">Speaker</a>
-                <a class="dropdown-item" href="Asset_Fields/cpu.php">Lan Box</a>
-                <a class="dropdown-item" href="Asset_Fields/cpu.php">CRO</a>
-                <a class="dropdown-item" href="Asset_Fields/cpu.php">Scanner</a>
-                <a class="dropdown-item" href="Asset_Fields/cpu.php">WiFi Router</a>
-                <a class="dropdown-item" href="Asset_Fields/cpu.php">Others</a>
+                <a class="dropdown-item" href="Asset_Fields/mouse.php">Mouse</a>
+                <a class="dropdown-item" href="Asset_Fields/keyboard.php">Keyboard</a>
+                <a class="dropdown-item" href="Asset_Fields/printer.php">Printer</a>
+                <a class="dropdown-item" href="Asset_Fields/speaker.php">Speaker</a>
+                <a class="dropdown-item" href="Asset_Fields/lan.php">Lan Box</a>
+                <a class="dropdown-item" href="Asset_Fields/cro.php">CRO</a>
+                <a class="dropdown-item" href="Asset_Fields/scanner.php">Scanner</a>
+                <a class="dropdown-item" href="Asset_Fields/wifi.php">WiFi Router</a>
+                <a class="dropdown-item" href="Asset_Fields/others.php">Others</a>
               </div>
             </div>
           </div>

@@ -4,47 +4,21 @@
     if($_SERVER["REQUEST_METHOD"] == "POST"){
       $pdate = $_POST['pur_date'];
       $make = $_POST['make'];
-      $corema = $_POST['core_make'];
-      $corety = $_POST['core_type'];
-      $corefre = $_POST['core_freq'];
-      $arch = $_POST['arch'];
-      $os = $_POST['OS'];
-      $ramm = $_POST['ram_make'];
-      $ramf = $_POST['ram_freq'];
-      $ramt = $_POST['ram_type'];
-      $rams = $_POST['Ram'];
-      $eram = $_POST['extra_ram'];
-      $moth = $_POST['mot_make'];
-      $dvd = $_POST['dvd_make'];
-      $usb = $_POST['usb'];
-      $sound = $_POST['sound'];
-      $wifi = $_POST['wifi'];
-      $blue = $_POST['bluetooth'];
-      $speaker = $_POST['speaker'];
-      $hdd = $_POST['hard_disk'];
-      $flag=1;
+
       foreach ($_POST as $key) {
         if($key==''){
           echo '<script language="javascript">';
           echo 'alert("Fill in all the fields")';
           echo '</script>';
           break;
-          $flag=0;
         }
       }
-      $sql = "INSERT INTO cpu VALUES";
+      $sql = "INSERT INTO cro VALUES";
       $sql = $sql.'(';
-      if($flag==0 && ($arch==1 || $wifi==1 || $blue ==1 || $speaker==1 || $sound==1) ){
-        echo '<script language="javascript">';
-        echo 'alert("Fill in all the fields")';
-        echo '</script>';
-      }
-      else{
         foreach ($_POST as $key) {
           $sql=$sql."'".$key."', ";
         }
-        $sql = rtrim($sql, ", ").');';
-      }
+      $sql = rtrim($sql, ", ").');';
       echo $sql;
     }
       /*include("config.php");
@@ -95,7 +69,7 @@
 
       <!-- Nav Item - Dashboard -->
       <li class="nav-item active">
-        <a class="nav-link" href="/cmr//home.php">
+        <a class="nav-link" href="../home.php">
           <i class="fas fa-fw fa-tachometer-alt"></i>
           <span>Dashboard</span></a>
       </li>
@@ -420,11 +394,11 @@
                 <div class="card-body p-0">
                   <!-- Nested Row within Card Body -->
                   <div class="row">
-                    <div class="col-lg-6 d-none d-lg-block bg-cpu-image"></div>
+                    <div class="col-lg-6 d-none d-lg-block bg-cro-image"></div>
                     <div class="col-lg-6">
                       <div class="p-5">
                         <div class="text-center">
-                          <h1 class="h4 text-gray-900 mb-4">CPU Data Entry</h1>
+                          <h1 class="h4 text-gray-900 mb-4">Monitor Data Entry</h1>
                         </div>
                         <form class="user" method="post" action="">
                           <div class="form-group">
@@ -436,107 +410,13 @@
                             <input type="text" class="form-control form-control-user" name="make" id="make" aria-describedby="make" placeholder="Enter Make...">
                           </div>
                           <div class="form-group">
-                            Enter Core Make:
-                            <input type="text" class="form-control form-control-user" name="core_make" id="core_make" aria-describedby="core_make" placeholder="Enter Core Make...">
+                            Enter Screen Size:
+                            <input type="text" class="form-control form-control-user" name="screen" id="screen" aria-describedby="screen" placeholder="Enter Screen Size...">
                           </div>
                           <div class="form-group">
-                            Enter Architecture:
-                                <div class="dropdown no-arrow mb-4">
-                                  <select class="btn btn-secondary dropdown-toggle" type="button" name="arch" id="arch" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <option class="dropdown-item" value="1" id="default">Select CPU Architecture Type</option>
-                                    <option class="dropdown-item" value="2" id="a1">x86 - 32 Bit</option>
-                                    <option class="dropdown-item" value="3" id="a2">x64 - 64 Bit</option>
-                                  </select>
-                                </div>
-                          </div>
-                          <div class="form-group">
-                            Enter Core Type:
-                            <input type="text" class="form-control form-control-user" name="core_type" id="core_type" aria-describedby="core_type" placeholder="Enter Core Type(i3, i5, etc)...">
-                          </div>
-                          <div class="form-group">
-                            Enter Core Frequency:
-                            <input type="text" class="form-control form-control-user" name="core_freq" id="core_freq" aria-describedby="core_freq" placeholder="Enter Core Frequency...">
-                          </div>
-                          <div class="form-group">
-                            Enter RAM Make:
-                            <input type="text" class="form-control form-control-user" name="ram_make" id="ram_make" aria-describedby="ram_make" placeholder="Enter RAM Make...">
-                          </div>
-                          <div class="form-group">
-                            Enter RAM capacity:
-                            <input type="text" class="form-control form-control-user" name="Ram" id="Ram" aria-describedby="Ram" placeholder="Enter Ram Size...">
-                          </div>
-                          <div class="form-group">
-                            Enter Ram Frequency:
-                            <input type="text" class="form-control form-control-user" name="ram_freq" id="ram_freq" aria-describedby="ram_freq" placeholder="Enter RAM Frequency...">
-                          </div>
-                          <div class="form-group">
-                            Enter RAM Type:
-                            <input type="text" class="form-control form-control-user" name="ram_type" id="ram_type" aria-describedby="ram_type" placeholder="Enter RAM Type(DDR3, DDR4, etc)...">
-                          </div>
-                          <div class="form-group">
-                            Enter Extra RAM Size:
-                            <input type="text" class="form-control form-control-user" name="extra_ram" id="extra_ram" aria-describedby="extra_ram" placeholder="Enter Extra RAM Capacity...">
-                          </div>
-                          <div class="form-group">
-                            Enter Motherboard Make:
-                            <input type="text" class="form-control form-control-user" name="mot_make" id="mot_make" aria-describedby="mot_make" placeholder="Enter Motherboard Make...">
-                          </div>
-                          <div class="form-group">
-                            Enter hard disk capacity:
-                            <input type="text" class="form-control form-control-user" name="hard_disk" id="hard_disk" aria-describedby="hard_disk" placeholder="Enter hard disk size...">
-                          </div>
-                          <div class="form-group">
-                            Enter OS Type:
-                            <input type="text" class="form-control form-control-user" name="OS" id="OS" aria-describedby="OS" placeholder="Enter OS Type...">
-                          </div>
-                          <div class="form-group">
-                            Enter CD Drive Make:<br>
-                            <font size="1%">If no DVD, enter None </font>
-                            <input type="text" class="form-control form-control-user" name="dvd_make" id="dvd_make" aria-describedby="dvd_make" placeholder="Enter DVD Make...">
-                          </div>
-                          <div class="form-group">
-                            Enter no. of USB Slots:
-                            <input type="text" class="form-control form-control-user" name="usb" id="usb" aria-describedby="usb" placeholder="Enter no. of USB ports...">
-                          </div>
-                          <div class="form-group">
-                            Sound Card Status:
-                            <div class="dropdown no-arrow mb-4">
-                              <select class="btn btn-secondary dropdown-toggle" type="button" name="sound" id="sound" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <option class="dropdown-item" value="1" id="default">Select Sound Card State</option>
-                                <option class="dropdown-item" value="Installed" id="s1">Installed</option>
-                                <option class="dropdown-item" value="Not Installed" id="s2">Not Installed</option>
-                              </select>
-                              </div>
-                            </div>
-                            <div class="form-group">
-                              Bluetooth Status:
-                              <div class="dropdown no-arrow mb-4">
-                                <select class="btn btn-secondary dropdown-toggle" type="button" name="bluetooth" id="bluetooth" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                  <option class="dropdown-item" value="1" id="default">Select Bluetooth State</option>
-                                  <option class="dropdown-item" value="Installed" id="b1">Installed</option>
-                                  <option class="dropdown-item" value="Not Installed" id="b2">Not Installed</option>
-                                </select>
-                                </div>
-                              </div>
-                              <div class="form-group">
-                                WiFi Status:
-                                <div class="dropdown no-arrow mb-4">
-                                  <select class="btn btn-secondary dropdown-toggle" type="button" name="wifi" id="wifi" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <option class="dropdown-item" value="1" id="default">Select WiFi State</option>
-                                    <option class="dropdown-item" value="Installed" id="w1">Installed</option>
-                                    <option class="dropdown-item" value="Not Installed" id="w2">Not Installed</option>
-                                  </select>
-                                  </div>
-                                </div>
-                        <div class="form-group">
-                          Speaker Status:
-                          <div class="dropdown no-arrow mb-4">
-                            <select class="btn btn-secondary dropdown-toggle" type="button" name="speaker" id="speaker" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                              <option class="dropdown-item" value="1" id="default">Select Speaker State</option>
-                              <option class="dropdown-item" value="Installed" id="p1">Installed</option>
-                              <option class="dropdown-item" value="Not Installed" id="p2">Not Installed</option>
-                            </select>
-                            </div>
+                            Enter Inputs Available:<br>
+                            <font size="1%">Separate various inouts with a ';'</font>
+                            <input type="text" class="form-control form-control-user" name="make" id="make" aria-describedby="make" placeholder="Enter Make...">
                           </div>
                           <hr>
                           <input type="submit" class="btn btn-primary btn-user btn-block" value="Submit">

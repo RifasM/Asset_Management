@@ -10,7 +10,7 @@
         $myusername = mysqli_real_escape_string($db,$_POST['username']);
         $mypassword = mysqli_real_escape_string($db,$_POST['password']);
 
-        $sql = "SELECT * FROM login WHERE email_id = '$myusername' and password = '$mypassword'";
+        $sql = "SELECT * FROM Login WHERE Email_id = '$myusername' and password = '$mypassword'";
 
         $result = mysqli_query($db,$sql);
 
